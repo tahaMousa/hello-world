@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1521854497 source:c:\users\taha\desktop\calwithheader\main.c
+	"includes.h"
+
+1521854430 c:\users\taha\desktop\calwithheader\includes.h
+	<stdio.h>
+	<stdlib.h>
+	"cal_taha.h"
+
+1521854430 source:c:\users\taha\desktop\calwithheader\cal_taha.c
+	"cal_taha.h"
+
+1521854203 c:\users\taha\desktop\calwithheader\cal_taha.h
+
