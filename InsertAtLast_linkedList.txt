@@ -1,0 +1,77 @@
+/******************************************************************************
+
+                            Different tybes of data structure.
+                Code of insert at last of linked list single line.
+this code written by : Taha Mohammed, it is very clear and organaised well.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void insertAtLast(int value);// function prototybe
+void printlist(void);       //function prototybe
+
+typedef struct node        //decliration of data tybe of struct node 
+{   
+    int data;              //this data tybe take two kinds of data ineger and pointer of struct
+    struct node* next;
+}node;
+
+node *head = NULL;        //decliration of the first pointer points to the first element of the list
+
+
+void main(void)
+{
+ 
+   insertAtLast(50);
+   printlist();
+   insertAtLast(10);
+   printlist();
+   insertAtLast(40);
+   printlist();
+}
+
+
+
+
+void insertAtLast(int value)
+
+{
+    node* temp=(node*)malloc(sizeof(node));    //temp is a pointer of node to store a block in the memory of the size of node(data+pointer)
+    temp->next=NULL;                          //the next is pointing to Null
+    temp->data=value;                        //the integer part of the temp is equal to the value i wann store
+    
+    if(head==NULL)                          //there is no list
+    {
+      head=temp;  
+    }
+    else
+    {
+        node* current=head;                   //creat a pointer not to lose the head pointer
+             
+              while(current->next!=NULL)    // if we reached the end of the list
+                  {
+                   current=current->next;
+                   }
+                current->next=temp;        //merg the old last element of the list to the end of the new one
+    }
+    
+
+
+}
+
+void printlist(void)
+{
+  node *current=head;
+  while(current!=NULL)
+  {
+      printf("%d  ",current->data);
+      current=current->next;
+      
+  }
+   printf("Null\n");
+        
+
+}
