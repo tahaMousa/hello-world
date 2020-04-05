@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void insertAtFirst(int value);
+void printlist(void);
+
+typedef struct node
+{   
+    int data;
+    struct node* next;
+}node;
+
+node *head = NULL;
+
+
+void main(void)
+{
+   printlist();
+    insertAtFirst(10);
+    printlist();
+    insertAtFirst(20);
+     printlist();
+    insertAtFirst(30);
+     printlist();
+}
+
+void printlist(void)
+{
+  node *current=head;
+  while(current!=NULL)
+  {
+      printf("%d  ",current->data);
+      current=current->next;
+      
+  }
+   printf("Null\n");
+        
+
+}
+void insertAtFirst(int value)
+{
+    
+    //case1 list is empty
+    if(head==NULL)
+    {
+        head=(node*)malloc(sizeof(node));
+        head->data= value;
+        head->next= NULL;
+    }
+    //case2 list has values 
+    else
+    {
+        node* temp= (node*)malloc(sizeof(node));   //creat a pointer of node which size equal to node 
+        temp->data=value;                          //put the value i need to insert in temp data
+        temp->next=head;                           //make the pointer next point to the list
+        head=temp;                                 //retern the head pointer to the first of list
+    }
+    
+}
