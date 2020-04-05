@@ -1,0 +1,178 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void insertAtFirst(int value);
+void insertAtLast(int value);
+void delet_first(void);
+void search(int value);
+void delet_last(void);
+void printlist(void);
+
+typedef struct node
+{   
+    int data;
+    struct node* next;
+}node;
+
+node *head = NULL;
+
+
+void main(void)
+{
+  insertAtFirst(10);
+   printlist();
+  
+  insertAtFirst(10);
+   printlist();
+  insertAtFirst(30);
+   printlist();
+   insertAtLast(40);
+   printlist();
+    search(0);
+    printlist();
+   
+}
+
+
+
+
+void insertAtLast(int value)
+
+{
+    node* temp=(node*)malloc(sizeof(node));
+    temp->next=NULL;
+    temp->data=value;
+    
+    if(head==NULL)
+    {
+      head=temp;  
+    }
+    else
+    {
+        node* current=head;
+             
+              while(current->next!=NULL)
+                  {
+                   current=current->next;
+                   }
+                current->next=temp;
+    }
+    
+
+
+}
+
+void printlist(void)
+{
+  node *current=head;
+  while(current!=NULL)
+  {
+      printf("%d  ",current->data);
+      current=current->next;
+      
+  }
+   printf("Null\n");
+        
+
+}
+void insertAtFirst(int value)
+{
+    
+    //case1 list is empty
+    if(head==NULL)
+    {
+        head=(node*)malloc(sizeof(node));
+        head->data= value;
+        head->next= NULL;
+    }
+    //case2 list has values 
+    else
+    {
+        node* temp= (node*)malloc(sizeof(node));   //creat a pointer of node which size equal to node 
+        temp->data=value;                          //put the value i need to insert in temp data
+        temp->next=head;                           //make the pointer next point to the list
+        head=temp;                                 //retern the head pointer to the first of list
+    }
+    
+}
+void delet_first(void)
+{
+    node* temp=NULL;
+    
+    if(head==NULL)
+    {
+        printf("is empty");
+    }
+    else
+    {
+      temp= head;
+      head=head->next;
+      free(temp);
+    }
+    
+    
+}
+
+
+void delet_last(void)
+{
+node* temp = NULL;
+node* del  = NULL;
+
+if(head==NULL)
+{
+    printf("is empty");
+    
+}
+else if(head->next==NULL)
+{
+  free(head);
+  head=NULL;
+}
+else
+{
+node* temp=head;
+while(temp->next->next!=NULL)
+{temp=temp->next;
+
+}
+del=temp->next;
+temp->next=NULL;
+free(del);
+
+}}
+void search(int value)
+{
+    node* temp=head;
+    int count =0;
+    int flag=0;
+    if(head==NULL)
+    {printf("empty");
+    }
+    else
+    {
+        while(temp!=NULL)
+        {
+        if(temp->data==value)
+          {
+              printf("the value is %d in the pos %d\n",temp->data,count);
+              flag=1;
+              
+          }
+          count++;
+          temp=temp->next;
+        }
+        if(flag==0 & temp==NULL)
+        printf("there is no value\n");
+    }
+    
+
+}
